@@ -35,5 +35,43 @@ Dim FindCell As Range
         End If
             
     Next
+    
+    
+Sub 改顏色()
+
+arr = Array(7, 8, 15, 20, 24, 28, 30, 31, 32, 33, 36, 37, 39, 40, 41, 44, 45)
+
+For i = 0 To UBound(arr)
+
+    Cells(arr(i), 27).Select
+    ActiveCell.FormulaR1C1 = "空白"
+    
+    Range(Cells(arr(i), 3), Cells(arr(i), 26)).Select
+    With Selection.Interior
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    
+Next
+
+For j = 5 To 26 Step 2
+    
+    Cells(46, j).Select
+    ActiveCell.FormulaR1C1 = "內建公式"
+
+    Range(Cells(6, j), Cells(45, j)).Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    
+Next
+
+End Sub
 
 End Sub
