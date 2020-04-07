@@ -36,7 +36,8 @@ Dim FindCell As Range
             
     Next
     
-    
+End Sub
+  
 Sub 改顏色()
 
 arr = Array(7, 8, 15, 20, 24, 28, 30, 31, 32, 33, 36, 37, 39, 40, 41, 44, 45)
@@ -71,7 +72,5 @@ For j = 5 To 26 Step 2
     End With
     
 Next
-
-End Sub
 
 End Sub
