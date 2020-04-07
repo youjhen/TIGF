@@ -5,25 +5,29 @@ Dim w1, ws As Worksheet
 Dim AC As Integer
 Dim FindCell As Range
   
-    For s = 2 To 3
+    For s = 2 To Worksheets.Count
     
         Set wb = ThisWorkbook
         Set w1 = wb.Worksheets(1)
         Set ws = wb.Worksheets(s)
-        Set FindCell = ws.Range("A:A").Find(4010009, LookIn:=xlValues) '¤ñ¹ï¤½¥q¥N¸¹4010009
+        Set FindCell = ws.Range("A:A").Find(4010009, LookIn:=xlValues) 'æ¯”å°å…¬å¸ä»£è™Ÿ4010009
         
         If Not FindCell Is Nothing Then
         
-            n = w1.Cells(ActiveSheet.Rows.Count, "E").End(xlUp).Row + 1 '¨ú±oE³Ì«á¤@¦C
+            n = w1.Cells(ActiveSheet.Rows.Count, "A").End(xlUp).Row + 1 'å–å¾—Aæœ€å¾Œä¸€åˆ—
             i = 3
-            AC = ws.Cells(FindCell.Row, ActiveSheet.Columns.Count).End(xlToLeft).Column '¨ú±o¦Uªí³Ì«á¤@Äæ
+            AC = ws.Cells(FindCell.Row, ActiveSheet.Columns.Count).End(xlToLeft).Column 'å–å¾—å„è¡¨æœ€å¾Œä¸€æ¬„
             
             Do While i <= AC
             
-                w1.Range("H" & n) = ws.Name
-                w1.Range("I" & n) = Split(ws.Columns(i).Address(, 0), ":")
-                w1.Range("J" & n) = FindCell.Row '¨ú±o²Ä¤@¦C
-                
+                w1.Range("A" & n) = ws.Name
+                w1.Range("B" & n) = Split(ws.Columns(i).Address(, 0), ":")
+                w1.Range("C" & n) = FindCell.Row 'å–å¾—ç¬¬ä¸€åˆ—
+                w1.Range("D" & n).Select
+                   ActiveCell.FormulaR1C1 = "=INDIRECT(""'""&RC[-3]&""'!""&RC[-2]&RC[-1]-1)"
+                w1.Range("E" & n).Select
+                   ActiveCell.FormulaR1C1 = "=INDIRECT(""'""&RC[-4]&""'!""&RC[-3]&RC[-2])"
+                   
             i = i + 1
             n = n + 1
             Loop
