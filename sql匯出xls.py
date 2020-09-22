@@ -5,8 +5,8 @@ import pandas as pd
 # server = 'myserver,port' # to specify an alternate port
 server = '111.111.111.111' 
 database = 'II' 
-username = '000' 
-password = '000'
+username = '111' 
+password = '111'
 date='YYYYMM'
 cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
 cursor = cnxn.cursor()
