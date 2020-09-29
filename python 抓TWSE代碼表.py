@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 category=['2上市','4上櫃','5興櫃','8創櫃板證券']
 for k in category:
     url='http://isin.twse.com.tw/isin/C_public.jsp?strMode='+k[:1]
-    with open('D:/'+k+'.csv','w',encoding='UTF-8',newline='') as f:
+    with open('D:/'+k+'.csv','w',encoding='UTF-8_sig',newline='') as f:
         f_csv=csv.writer(f)          
         res = requests.get(url, verify = False)
         soup = BeautifulSoup(res.text, 'html.parser') 
